@@ -41,5 +41,3 @@ app.use(passport.setAuthentication);
 app.use('/', require('./routes'))
 
 app.listen(port)
-
-// hi aavo
