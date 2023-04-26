@@ -1,0 +1,145 @@
+<%- include('header') %>
+
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-light rounded h-100 p-4">
+                    <h6 class="mb-4">Add Category</h6>
+                    <form action="/add-category" method="post">
+                        <div class="form-floating mb-3">
+                            <input type="text" name="category_name" class="form-control" id="productName"
+                                placeholder="Add category">
+                            <label for="floatingInput">Add category</label>
+                        </div>
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-primary me-2">Add Category</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-light rounded h-100 p-4">
+                    <h6 class="mb-4">Add SubCategory</h6>
+                    <form action="/add-Subcategory" method="post">
+                        <div class="form-floating mb-3">
+                            <select class="form-control" name="category_id" id="">
+                                <option value="">---select category---</option>
+                                <% data.map((val)=>{
+                                    if(val.status === '1'){
+                                    %>
+                                    <option value="<%= val.id %>">
+                                        <%= val.category_name %>
+                                    </option>
+                                    <% }}) %>
+                            </select>
+                            <label for="floatingInput">Select Maincategory</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" name="subcategory_name" class="form-control" id="productName"
+                                placeholder="Add category">
+                            <label for="floatingInput">Add Subcategory</label>
+                        </div>
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-primary me-2">Add Subcategory</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- view category Admin side -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="bg-light rounded h-100 p-4">
+                    <h6 class="mb-4">View Main category [Admin side]</h6>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Category name</th>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% data.map((val, index)=>{ %>
+
+                                    <tr>
+                                        <td>
+                                            <%= index + 1 %>
+                                        </td>
+                                        <td>
+                                            <%= val.category_name %>
+                                        </td>
+                                        <td>
+                                            <a href="/mainCatDelete/<%= val.id %>" class="btn btn-danger">Delete</a> ||
+                                            <a href="/mainCatEdit/<%= val.id %>" class="btn btn-success">Edit</a>
+                                        </td>
+                                        <td>
+                                            <% if(val.status==='1' ){ %>
+                                                <a href="/mainCatActive/<%= val.id %>"
+                                                    class="btn btn-primary">Active</a>
+                                                <% }else{ %>
+                                                    <a href="/mainCatDeactive/<%= val.id %>"
+                                                        class="btn btn-warning">Deactive</a>
+                                                    <% } %>
+                                        </td>
+                                    </tr>
+
+                                    <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- view category USer side -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="bg-light rounded h-100 p-4">
+                    <h6 class="mb-4">View Main category [User side]</h6>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Category name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% data.map((val, index)=>{ %>
+                                    <% if(val.status === '1' ){ %>
+                                        <tr>
+                                            <td>
+                                                <%= index + 1 %>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <%= val.category_name %>
+                                            </td>
+                                        </tr>
+                                    <% } %>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('footer') %>
