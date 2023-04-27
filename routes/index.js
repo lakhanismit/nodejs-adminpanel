@@ -5,7 +5,7 @@ const loginController = require('../controllers/login.controller');
 const imageUpload = require('../middleware/imageupload');
 
 // login
-routes.get('/', loginController.signin)
+routes.get('/admin', loginController.signin)
 routes.get('/signup', loginController.signup)
 routes.get('/index', passport.checkAuthentication, loginController.index)
 routes.get('/myprofile', passport.checkAuthentication, loginController.myprofile)
@@ -23,7 +23,6 @@ routes.post('/forgot-password-check', loginController.forgotData)
 routes.post('/check-otp', loginController.otpData)
 routes.post('/update-password', loginController.updatePassword)
 
-routes.use('/user', require('./user/yom.routes'))
-routes.use('/', require('./slider.routes'))
+
 
 module.exports = routes

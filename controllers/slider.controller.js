@@ -3,8 +3,6 @@ const yomModel = require('../models/user/yom.model');
 const path = require("path");
 const fs = require('fs');
 let imgPath = path.join("uploads");
-const nodemailer = require('nodemailer');
-
 
 const sliderform = async (req, res) => {
     try {
@@ -100,4 +98,5 @@ const updateSlider = async (req, res) => {
     }
 }
 
-module.exports = { sliderform, addSlider, silderDelete, Active, Deactive, SliderEdit, updateSlider }
+
+module.exports = { sliderform, addSlider, silderDelete, Active, Deactive, SliderEdit, updateSlider}

@@ -17,7 +17,7 @@ const connect_mongo = require("connect-mongo");
 app.use('/uploads', express.static(path.join('uploads')))
 
 app.use(express.static('public'))  // public folder link
-app.use('/user', express.static('public/user'))  // public folder link
+app.use(express.static('public/user'))  // public folder link
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))
 app.use(cookie())
@@ -38,6 +38,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthentication);
 
-app.use('/', require('./routes'))
+app.use('/', require('./routes/user/yom.routes'))
 
 app.listen(port)

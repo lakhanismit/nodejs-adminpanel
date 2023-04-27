@@ -8,6 +8,7 @@ const imageUpload = require('../middleware/imageupload');
 routes.get('/sliderform', passport.checkAuthentication, sliderController.sliderform)
 
 
+
 // yom slider routes
 routes.post('/addSlider', imageUpload, sliderController.addSlider)
 routes.get('/delete/:_id', sliderController.silderDelete)

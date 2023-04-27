@@ -110,78 +110,23 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div id="owl-portfolio" class="owl-carousel owl-theme">
-						<div class="item">
-							<figure>
-								<img alt="portfolio" src="files/images/01-portfolio.jpg">
-								<figcaption>
-									<h3>Plaid Authentic</h3>
-									<p>Lorem ipsum dolor sit amet consectetur.</p>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="item">
-							<figure>
-								<img alt="portfolio" src="files/images/02-portfolio.jpg">
-								<figcaption>
-									<h3>Portland Neutra</h3>
-									<p>Lorem ipsum dolor sit amet consectetur.</p>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="item">
-							<figure>
-								<img alt="portfolio" src="files/images/03-portfolio.jpg">
-								<figcaption>
-									<h3>Synth Thundercats</h3>
-									<p>Lorem ipsum dolor sit amet consectetur.</p>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="item">
-							<figure>
-								<img alt="portfolio" src="files/images/04-portfolio.jpg">
-								<figcaption>
-									<h3>Bushwick Letterpress</h3>
-									<p>Lorem ipsum dolor sit amet consectetur.</p>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="item">
-							<figure>
-								<img alt="portfolio" src="files/images/05-portfolio.jpg">
-								<figcaption>
-									<h3>Fashion Heirloom</h3>
-									<p>Lorem ipsum dolor sit amet consectetur.</p>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="item">
-							<figure>
-								<img alt="portfolio" src="files/images/06-portfolio.jpg">
-								<figcaption>
-									<h3>Locavore Brooklyn</h3>
-									<p>Lorem ipsum dolor sit amet consectetur.</p>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="item">
-							<figure>
-								<img alt="portfolio" src="files/images/07-portfolio.jpg">
-								<figcaption>
-									<h3>Meggings Mixtape</h3>
-									<p>Lorem ipsum dolor sit amet consectetur.</p>
-								</figcaption>
-							</figure>
-						</div>
-						<div class="item">
-							<figure>
-								<img alt="portfolio" src="files/images/08-portfolio.jpg">
-								<figcaption>
-									<h3>Normcore Dreamcatcher</h3>
-									<p>Lorem ipsum dolor sit amet consectetur.</p>
-								</figcaption>
-							</figure>
-						</div>
+						<% postData.map((val)=>{%>
+							<% if(val.status==='1' ){ %>
+								<div class="item">
+									<figure>
+										<img alt="portfolio" src="/<%= val.image %>">
+										<figcaption>
+											<h3>
+												<%= val.title %>
+											</h3>
+											<p>
+												<%= val.subtitle %>
+											</p>
+										</figcaption>
+									</figure>
+								</div>
+								<% } %>
+									<%})%>
 					</div>
 				</div>
 			</div>
