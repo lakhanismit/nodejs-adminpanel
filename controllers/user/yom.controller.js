@@ -16,7 +16,8 @@ const home = async (req, res) => {
 
 const wholeBlogPage = async (req, res) => {
     try {
-        const blogData = await blogModel.find({})
+        const { params: { _id } } = req
+        const blogData = await blogModel.findById({ _id })
         res.render('./user/wholeblog', { blogData })
     } catch (error) {
         return console.log(error.message);
@@ -31,7 +32,7 @@ const contactPage = async (req, res) => {
     }
 }
 
-const addContact = async(req, res)=>{
+const addContact = async (req, res) => {
     try {
         const addContact = await contactModel.create(req.body)
         if (addContact) {
