@@ -21,7 +21,7 @@ const addUser = async (req, res) => {
     try {
         const addUser = await LoginModel.create(req.body)
         if (addUser) {
-            return res.redirect('/')
+            return res.redirect('/admin')
         }
         console.log(addUser);
     } catch (error) {
